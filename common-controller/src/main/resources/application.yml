@@ -1,0 +1,36 @@
+server:
+  port: 10080
+  contextPath: /commonServer
+  tomcat:
+    uri-encoding:UTF-8
+logging:
+  config: classpath:log4j2.xml
+spring:
+  http:
+    multipart:
+      enabled: true
+      maxFileSize: 30MB
+      maxRequestSize: 30MB
+  aop: 
+    auto: true 
+  datasource:
+    url: jdbc:mysql://rm-2ze180j4fln454i5s4o.mysql.rds.aliyuncs.com:3306/markonly?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: Liuyujiao3080701
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    max-idle: 5
+    max-wait: 10000
+    min-idle: 1
+    initial-size: 3
+    max-active: 600
+  redis:
+    database: 1
+    host: 39.105.106.238
+    port: 6379
+    password: 123456
+    timeout: 5000
+    pool:
+      max-active: 300
+      max-wait: 100000
+      max-idle: 150
+      min-idle: 100	
