@@ -1,22 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>common-server</groupId>
-    <artifactId>common-server</artifactId>
+    <groupId>paobang-server</groupId>
+    <artifactId>paobang-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>common-controller</artifactId>
+  <artifactId>paobang-controller</artifactId>
   
   <dependencies>
   	<dependency>
-  		<groupId>common-server</groupId>
-  		<artifactId>common-service</artifactId>
+  		<groupId>paobang-server</groupId>
+  		<artifactId>paobang-service</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
   
   <build>
-		<finalName>commonServer</finalName>
+		<finalName>paobangServer</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
