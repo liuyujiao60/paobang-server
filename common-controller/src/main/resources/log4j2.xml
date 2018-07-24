@@ -15,22 +15,6 @@
 		<Console name="CONSOLE" target="system_out">
 			<PatternLayout pattern="${PATTERN1}" />
 		</Console>
-
-		<RollingFile name="questionSpider" fileName="/markonly/logs/questionSpider.log"
-			filePattern="/markonly/logs/questionSpider_%d{yyyy-MM-dd}_%i.log">
-			<ThresholdFilter level="info" onMatch="ACCEPT"
-				onMismatch="DENY" />
-			<PatternLayout pattern="%m%n" />
-			<Policies>
-				<TimeBasedTriggeringPolicy />
-				<SizeBasedTriggeringPolicy size="100 MB" />
-			</Policies>
-			<DefaultRolloverStrategy max="9999" />
-		</RollingFile>
-		
-		<Async name="questionSpiderAsync"  bufferSize="262144">
-            <AppenderRef ref="questionSpider"/>
-        </Async>
         
         <RollingFile name="requestInfo" fileName="/markonly/logs/requestInfo.log"
 			filePattern="/markonly/logs/requestInfo_%d{yyyy-MM-dd}_%i.log">
