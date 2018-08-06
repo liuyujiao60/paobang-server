@@ -15,4 +15,9 @@ public class IdGenarator {
 	public static String getSecretId(){
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(IdGenarator.getSecretId());
+		System.out.println(System.currentTimeMillis());
+	}
 }

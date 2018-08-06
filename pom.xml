@@ -56,6 +56,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
+		<dependency>  
+            <groupId>org.springframework.boot</groupId>  
+            <artifactId>spring-boot-starter-data-jpa</artifactId>  
+        </dependency>  
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>druid</artifactId>
+		    <version>1.1.10</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -116,5 +126,7 @@
 		<module>paobang-controller</module>
 		<module>paobang-core</module>
 		<module>paobang-service</module>
+		<module>paobang-user-service</module>
+		<module>paobang-info-service</module>
 	</modules>
 </project>

@@ -1,4 +1,4 @@
-package com.server.viewobject;
+package com.paobang.viewobject;
 
 public class HeartBeatView {
 	

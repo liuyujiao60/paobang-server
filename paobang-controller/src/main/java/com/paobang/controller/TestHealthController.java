@@ -1,21 +1,26 @@
-package com.server.controller;
+package com.paobang.controller;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.paobang.service.HeartBeatService;
 import com.server.core.exception.DBExceptionEnums;
 import com.server.core.exception.ServerException;
-import com.server.viewobject.HeartBeatView;
 
 @Controller
 @RequestMapping("/testHealth")
 public class TestHealthController {
 	
 	public static ExecutorService fixedThreadPool = Executors.newFixedThreadPool(30);
+	
+	@Resource
+	private HeartBeatService heartBeatService;
 
 	@ResponseBody
 	@RequestMapping("/heartbeat")

@@ -1,4 +1,4 @@
-package com.server.dao;
+package com.paobang.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 

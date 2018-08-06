@@ -1,4 +1,4 @@
-package com.server.service;
+package com.paobang.service;
 
 public interface HeartBeatService {
 

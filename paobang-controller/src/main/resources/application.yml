@@ -14,10 +14,10 @@ spring:
   aop: 
     auto: true 
   datasource:
-    url: jdbc:mysql://rm-2ze180j4fln454i5s4o.mysql.rds.aliyuncs.com:3306/markonly?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://rm-2ze180j4fln454i5s4o.mysql.rds.aliyuncs.com:3306/paobang?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: Liuyujiao3080701
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     max-idle: 5
     max-wait: 10000
     min-idle: 1
@@ -34,3 +34,12 @@ spring:
       max-wait: 100000
       max-idle: 150
       min-idle: 100	
+      
+custom:
+  datasource:
+    paobang:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://rm-2ze180j4fln454i5s4o.mysql.rds.aliyuncs.com:3306/original-user?useUnicode=true&characterEncoding=utf8&useSSL=false
+      username: root
+      password: Liuyujiao3080701
+    names: paobang
