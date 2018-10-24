@@ -10,12 +10,14 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONObject;
+import com.server.component.ueditor.ActionEnter;
 import com.server.core.exception.ServerException;
 import com.server.core.log.LoggerFactory;
 import com.server.core.response.CommonResponseEntity;
@@ -31,14 +33,15 @@ public class ControllerAspect {
 	@Resource
 	private ResponseBodyHandler responseBodyHandler;
 	
-	@Pointcut("execution(public * com.server.controller..*.*(..))")
+	@Pointcut("execution(public * com.*.controller..*.*(..))")
     public void controllerHandler() {
     }
 	
 	@Around("controllerHandler()")
     public Object controllerHandler(ProceedingJoinPoint thisJoinPoint){
-		HttpServletRequest request =((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 		CommonResponseEntity responseEntity=null;
+		
+		HttpServletRequest request =((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 		JSONObject logInfo=new JSONObject();
 		{
 			logInfo.put("dateTime", DateUtil.getStringDateByDate(new Date()));
@@ -61,6 +64,8 @@ public class ControllerAspect {
 		try {
 			
 			Object result = thisJoinPoint.proceed();
+			if(logInfo.getString("url").contains("ueditor")||logInfo.getString("url").contains("file"))
+				return result;
 			responseEntity=responseBodyHandler.response(result, null);
 				
 		} catch (Throwable e) {
@@ -74,7 +79,6 @@ public class ControllerAspect {
 				e.printStackTrace();
 			}
 		}
-		logInfo.put("responseBody", responseEntity);
 		logger.info(logInfo.toJSONString());
         return responseEntity;
     }

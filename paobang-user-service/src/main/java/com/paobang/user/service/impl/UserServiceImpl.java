@@ -8,12 +8,14 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.paobang.user.contant.Contant;
 import com.paobang.user.contant.RedisContant;
 import com.paobang.user.dao.UserBasicInfoMapper;
 import com.paobang.user.entity.UserBasicInfo;
 import com.paobang.user.service.UserService;
 import com.paobang.user.viewobject.UserBasicInfoVo;
 import com.server.component.redis.impl.RedisComponent;
+import com.server.core.annotation.TargetDataSource;
 import com.server.core.common.IdGenarator;
 import com.server.core.exception.DBExceptionEnums;
 import com.server.core.exception.ServerException;

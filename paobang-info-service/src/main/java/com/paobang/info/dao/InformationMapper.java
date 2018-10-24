@@ -8,26 +8,28 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.paobang.info.contant.Contant;
 import com.paobang.info.entity.Information;
+import com.server.core.annotation.TargetDataSource;
 
 @Mapper
+@TargetDataSource(Contant.dbName)
 public interface InformationMapper {
 	
-	final String itemColumnStr="id,infoType,coverImage,shortTitle,title,tag,createTime";
+	final String itemColumnStr="id,infoType,coverImage,shortTitle,title,tag,columnId,createTime,status,source,sourceUrl";
 	
-	final String insertColumnStr="id,infoType,coverImage,shortTitle,title,tag,columnId,subColumnId,authorId,authorName,content,createTime";
+	final String insertColumnStr="id,infoType,coverImage,shortTitle,title,tag,columnId,authorId,authorName,content,createTime,source,sourceUrl";
 	
 	@Insert("insert into information("+insertColumnStr+")"
-			+ " values(#{information.id},#{information.infoType},#{information.coverImage},#{information.shortTitle},,#{information.title},"
-			+ " #{information.tag},#{information.columnId},#{information.subColumnId},#{information.authorId},#{information.authorName},"
-			+ " #{information.content},#{information.createTime})")
+			+ " values(#{information.id},#{information.infoType},#{information.coverImage},#{information.shortTitle},#{information.title},"
+			+ " #{information.tag},#{information.columnId},#{information.authorId},#{information.authorName},"
+			+ " #{information.content},#{information.createTime},#{information.source},#{information.sourceUrl})")
 	public void addInformation(@Param("information")Information information);
 	
 	@Select("select "+itemColumnStr+" from information limit #{currentRow},#{pageSize}")
 	public List<Information> getAllInformationForPage(@Param("currentRow")int currentRow,@Param("pageSize")int pageSize);
 	
-	@Select("select "+itemColumnStr+" from information "
-			+ " where status=-1 limit #{currentRow},#{pageSize}")
+	@Select("select "+itemColumnStr+" from information where status=-1 limit #{currentRow},#{pageSize}")
 	public List<Information> getOfflineInformationForPage(@Param("currentRow")int currentRow,@Param("pageSize")int pageSize);
 	
 	@Select("select "+itemColumnStr+" from information "

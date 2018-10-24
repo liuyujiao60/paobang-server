@@ -6,9 +6,12 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.paobang.user.contant.Contant;
 import com.paobang.user.entity.UserBasicInfo;
+import com.server.core.annotation.TargetDataSource;
 
 @Mapper
+@TargetDataSource(Contant.dbName)
 public interface UserBasicInfoMapper {
 	
 	@Insert("insert into user_basic_info(id,account,password,nickname,mobile,sex,birthday,regionCode,headImage,registTime,registType) "
@@ -36,4 +39,5 @@ public interface UserBasicInfoMapper {
 	
 	@Update("update user_basic_info set lastLoginTime=#{lastLoginTime} where id=#{id}")
 	public Integer updateUserLastLoginTime(@Param("id")String id,@Param("lastLoginTime")long lastLoginTime);
+	
 }

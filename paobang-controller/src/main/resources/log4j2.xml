@@ -16,8 +16,8 @@
 			<PatternLayout pattern="${PATTERN1}" />
 		</Console>
         
-        <RollingFile name="requestInfo" fileName="/markonly/logs/requestInfo.log"
-			filePattern="/markonly/logs/requestInfo_%d{yyyy-MM-dd}_%i.log">
+        <RollingFile name="requestInfo" fileName="/paobang/logs/requestInfo.log"
+			filePattern="/paobang/logs/requestInfo_%d{yyyy-MM-dd}_%i.log">
 			<ThresholdFilter level="info" onMatch="ACCEPT"
 				onMismatch="DENY" />
 			<PatternLayout pattern="%m%n" />

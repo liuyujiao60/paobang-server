@@ -1,5 +1,8 @@
 package com.paobang.user.entity;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("userBasicInfo")
 public class UserBasicInfo {
 	private String id;
 	private String account;

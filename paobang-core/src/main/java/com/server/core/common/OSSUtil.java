@@ -26,9 +26,8 @@ public class OSSUtil {
         try{
             // 上传Object.
             PutObjectResult result = client.putObject(bucketName, fileName, content);
-
+            
             String url=getImgUrl(bucketName, fileName);
-            System.out.println(url);
             return url;
         }catch(OSSException oe){
             System.out.println("Error Message: " + oe.getErrorCode());

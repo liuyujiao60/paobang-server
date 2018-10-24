@@ -8,6 +8,8 @@ public class InformationItemVo {
 	private String coverImage;
 	private String firstTag;
 	private InformationTypeVo informationType;
+	private InformationSpecialColumnVo informationColumn;
+	private int status;
 	private String createTime;
 	
 	public InformationItemVo(){}
@@ -55,5 +57,21 @@ public class InformationItemVo {
 
 	public void setFirstTag(String firstTag) {
 		this.firstTag = firstTag;
+	}
+
+	public InformationSpecialColumnVo getInformationColumn() {
+		return informationColumn;
+	}
+
+	public void setInformationColumn(InformationSpecialColumnVo informationColumn) {
+		this.informationColumn = informationColumn;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

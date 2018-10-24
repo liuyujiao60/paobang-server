@@ -15,7 +15,6 @@ import com.server.core.common.DynamicDataSourceRegister;
 @EnableTransactionManagement
 @EnableCaching
 @ComponentScan(basePackages={"com.server","com.paobang"})
-@MapperScan({"com.server","com.paobang"})
 @Import({DynamicDataSourceRegister.class})
 public class ServerApplication {
 	public static void main(String[] args) throws Exception {

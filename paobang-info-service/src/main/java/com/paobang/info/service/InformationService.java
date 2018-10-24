@@ -13,8 +13,6 @@ public interface InformationService {
 	public List<InformationItemVo> getInformationListByStatusForPage(int status,VZyPage page);
 	
 	public List<InformationItemVo> getInformationListByStatusAndColumnIdForPage(String columnId,int status,VZyPage page);
-
-	public List<InformationItemVo> getInformationListByStatusAndSubColumnIdForPage(String subColumnId,int status,VZyPage page);
 	
 	public Information updateInformationStatusByAdmin(String infoId,int status);
 }

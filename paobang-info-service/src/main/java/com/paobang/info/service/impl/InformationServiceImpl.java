@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.paobang.info.contant.InformationExceptionEnums;
 import com.paobang.info.dao.InformationMapper;
 import com.paobang.info.entity.Information;
-import com.paobang.info.service.InformationAuthorService;
+import com.paobang.info.service.InformationColumnService;
 import com.paobang.info.service.InformationService;
 import com.paobang.info.service.InformationTypeService;
 import com.paobang.info.viewobject.InformationItemVo;
@@ -28,7 +28,9 @@ public class InformationServiceImpl implements InformationService{
 	@Resource
 	private InformationMapper informationMapper;
 	@Resource
-	private InformationAuthorService informationAuthorService;
+	private InformationColumnService informationColumnService;
+//	@Resource
+//	private InformationAuthorService informationAuthorService;
 	@Resource
 	private InformationTypeService informationTypeService;
 
@@ -86,27 +88,6 @@ public class InformationServiceImpl implements InformationService{
 	}
 
 	@Override
-	public List<InformationItemVo> getInformationListByStatusAndSubColumnIdForPage(String subColumnId, int status,
-			VZyPage page) {
-		// TODO Auto-generated method stub
-		List<InformationItemVo> resultVoList=new ArrayList<InformationItemVo>();
-		List<Information> informationList=new ArrayList<Information>();
-		if(status==-1)
-			informationList=informationMapper.getOfflineInformationBySubColumnIdForPage(subColumnId,page.getCurrent(), page.getPageSize());
-		if(status==0)
-			informationList=informationMapper.getStayOnlineInformationBySubColumnIdForPage(subColumnId,page.getCurrent(), page.getPageSize());
-		if(status==1)
-			informationList=informationMapper.getOnlineInformationBySubColumnIdForPage(subColumnId,page.getCurrent(), page.getPageSize());
-		
-		for(Information information:informationList){
-			InformationItemVo informationItemVo=this.transInformationToInformationItemVo(information);
-			resultVoList.add(informationItemVo);
-		}
-		
-		return resultVoList;
-	}
-
-	@Override
 	public Information updateInformationStatusByAdmin(String infoId, int status) {
 		// TODO Auto-generated method stub
 		int updateCount=informationMapper.updateInformationStatus(infoId, status);
@@ -122,8 +103,10 @@ public class InformationServiceImpl implements InformationService{
 		informationItemVo.setCoverImage(information.getCoverImage());
 		informationItemVo.setShortTitle(information.getShortTitle());
 		informationItemVo.setTitle(information.getTitle());
-		informationItemVo.setFirstTag(StringUtils.isNotBlank(information.getTag())?information.getTag().split("|")[0]:null);
+		informationItemVo.setFirstTag(StringUtils.isNotBlank(information.getTag())?information.getTag().split(",")[0]:null);
 		informationItemVo.setCreateTime(RelativeDateFormatUtil.format(new Date(information.getCreateTime())));
+		informationItemVo.setInformationColumn(informationColumnService.getInformationColumnById(information.getColumnId()));
+		informationItemVo.setStatus(information.getStatus());
 		InformationTypeVo informationTypeVo=informationTypeService.getInformationTypeVoById(information.getInfoType());
 		informationItemVo.setInformationType(informationTypeVo);
 		return informationItemVo;

@@ -14,7 +14,8 @@ public class BaseControllerInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("请求预处理。。。");
+		
+		
 		return true;
 	}
 
@@ -28,7 +29,10 @@ public class BaseControllerInterceptor implements HandlerInterceptor{
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("请求处理结束！");
+		response.setHeader("Access-Control-Allow-Methods","GET, POST, OPTIONS");
+		response.setHeader("Access-Control-Max-Age","1728000");
+		response.setHeader("Access-Control-Allow-Headers", "Origin, No-Cache, DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,X_Requested_With,If-Modified-Since,Cache-Control,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers"); 
+		response.setHeader("Access-Control-Allow-Credentials", "true");
 	}
 
 }

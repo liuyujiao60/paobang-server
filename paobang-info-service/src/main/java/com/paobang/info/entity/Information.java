@@ -8,8 +8,7 @@ public class Information {
 	private String shortTitle;
 	private String title;
 	private String tag;
-	private String columnId;
-	private String subColumnId;
+	private int columnId;
 	private String authorId;
 	private String authorName;
 	private String content;
@@ -54,17 +53,11 @@ public class Information {
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
-	public String getColumnId() {
+	public int getColumnId() {
 		return columnId;
 	}
-	public void setColumnId(String columnId) {
+	public void setColumnId(int columnId) {
 		this.columnId = columnId;
-	}
-	public String getSubColumnId() {
-		return subColumnId;
-	}
-	public void setSubColumnId(String subColumnId) {
-		this.subColumnId = subColumnId;
 	}
 	public String getAuthorId() {
 		return authorId;
