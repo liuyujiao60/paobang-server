@@ -6,3 +6,5 @@
 *.project
 *.classpath
 **/.classpath
+*.iml
+.idea/*
